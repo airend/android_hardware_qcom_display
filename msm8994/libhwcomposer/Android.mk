@@ -22,7 +22,12 @@ LOCAL_SHARED_LIBRARIES += libskia
 endif #TARGET_USES_QCOM_BSP
 
 LOCAL_CFLAGS                  := $(common_flags) -DLOG_TAG=\"qdhwcomposer\" \
-                                 -std=c++11
+                                 -std=c++11 -Wno-error=logical-not-parentheses \
+                                 -Wno-error=bool-compare -Wno-error=conversion \
+                                 -Wno-error=implicit-fallthrough= \
+                                 -Wno-error=sizeof-array-argument \
+                                 -Wno-error=format-truncation=
+                                 
 #Enable Dynamic FPS if PHASE_OFFSET is not set
 ifeq ($(VSYNC_EVENT_PHASE_OFFSET_NS),)
     LOCAL_CFLAGS += -DDYNAMIC_FPS
